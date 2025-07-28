@@ -1,0 +1,15 @@
+[build-system]
+python >= 3.10
+
+[project]
+name = "gemory-bank"
+version = "0.1.0"
+description = "A memory-bank for Gemini CLI integrating GitHub issues and projects"
+        authors = [
+            { name = "Rob Ford", email = "rob@defact.io" }
+        ]
+        dependencies = [
+            "uv",
+            "ruff",
+            "pygithub",
+]

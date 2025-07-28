@@ -1,0 +1,85 @@
+import React, { useState, useEffect } from 'react';
+
+// Main App component to render the GitHub Project Browser
+const App = () => {
+  // Example GitHub Project URL. Replace with your actual project URL.
+  // For testing, you might need a public project or one that allows embedding.
+  const defaultProjectUrl = "https://github.com/users/robandrewford/projects/5/views/1"; // Example: GitHub's own public project
+  const [projectUrl, setProjectUrl] = useState(defaultProjectUrl);
+  const [inputUrl, setInputUrl] = useState(defaultProjectUrl);
+
+  // Effect to handle URL changes
+  useEffect(() => {
+    // You could add URL validation here
+  }, [projectUrl]);
+
+  const handleUrlChange = (e) => {
+    setInputUrl(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    setProjectUrl(inputUrl);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-gray-100 font-sans p-4 flex flex-col items-center">
+      <style>
+        {`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .iframe-container {
+          width: 100%;
+          height: calc(100vh - 120px); /* Adjust height based on header/footer */
+          border-radius: 0.75rem; /* rounded-xl */
+          overflow: hidden; /* Ensure iframe respects border-radius */
+        }
+        iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+        `}
+      </style>
+
+      <h1 className="text-3xl font-bold mb-6 text-purple-400">GitHub Project Browser</h1>
+
+      <div className="w-full max-w-2xl flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+        <input
+          type="text"
+          value={inputUrl}
+          onChange={handleUrlChange}
+          placeholder="Enter GitHub Project URL (e.g., https://github.com/orgs/my-org/projects/1)"
+          className="flex-grow p-3 border border-gray-700 rounded-lg bg-gray-800 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
+        <button
+          onClick={handleSubmit}
+          className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+        >
+          Load Project
+        </button>
+      </div>
+
+      <div className="w-full max-w-4xl bg-gray-800 rounded-xl shadow-lg p-2 iframe-container">
+        {projectUrl ? (
+          <iframe
+            src={projectUrl}
+            title="GitHub Project"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals" // Minimal sandbox for basic functionality
+          >
+            <p className="text-red-400 p-4">Your browser does not support iframes, or GitHub is blocking embedding. Please open the project directly: <a href={projectUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">{projectUrl}</a></p>
+          </iframe>
+        ) : (
+          <div className="flex items-center justify-center h-full text-gray-400">
+            Please enter a GitHub Project URL to view.
+          </div>
+        )}
+      </div>
+
+      <p className="text-sm text-gray-500 mt-4 max-w-2xl text-center">
+        Note: Direct embedding of GitHub Project pages may be restricted by GitHub's security policies (e.g., X-Frame-Options). If the page doesn't load, you may need to open it in an external browser. For deeper integration, consider building a custom UI using the GitHub API (which your MCP server now supports!).
+      </p>
+    </div>
+  );
+};
+
+export default App; 
