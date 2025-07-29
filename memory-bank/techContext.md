@@ -4,9 +4,6 @@ This document outlines the technologies and development setup for this project.
 
 ## Core Technologies:
 - Python 3.10+
-- Flask (Web Framework)
-- SQLAlchemy (ORM)
-- PostgreSQL (Database)
 
 ## Development Setup:
 

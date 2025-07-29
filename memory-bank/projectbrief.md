@@ -1,4 +1,4 @@
-# Project Brief: [Your Project Name]
+# Project Brief: [Project Name]
 
 ## 1. Project Goal
 *What is the overarching objective of this project?*

@@ -33,4 +33,4 @@ This file captures unique patterns, preferences, and challenges specific to this
 - **Default Repository for Issues:** `your-github-username/your-repo-name` (Replace with actual)
 - **Default Project URL:** `https://github.com/users/your-github-username/projects/1` (Replace with actual)
 - **Common Labels:** `bug`, `feature`, `enhancement`, `documentation`, `high-priority`, `low-priority`
-- **Common Assignees:** `your-github-username`, `team-member-1`, `team-member-2`
+- **Common Assignees:** `robandrewford`
