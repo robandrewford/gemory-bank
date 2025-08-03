@@ -8,10 +8,6 @@ pip install uv
 touch pyproject.toml
 ```
 ```sh
-
-```
-
-```sh
 uv add ruff
 ```
 ```sh
